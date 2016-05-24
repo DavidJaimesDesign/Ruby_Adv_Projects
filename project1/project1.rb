@@ -1,10 +1,14 @@
 def bubble_sort(arr)
 	n = arr.length-1
-	5.times do |index, value|
+	count = 0
+
+while count < n
+	arr.each do |index, value|
 		if arr[index] > arr[index + 1]
 			arr[index + 1] = arr[index]
-			arr[index] = arr[index]
 		end
-	return arr
+	print arr
 	end
+	count += 1
+end
 end
