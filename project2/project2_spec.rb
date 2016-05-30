@@ -49,29 +49,63 @@ describe Enumerable do
 		it "has a #my_all method" do
 			expect([]).to respond_to(:my_all?)
 		end
+
+		it "Goes through each element and returns true if there are no nil or false values in the block"
+		end
+
+		it "Has a default block {|obj| obj} that returns true when there are no nil or false values"
+		end
+
 	end
 
 	describe "my_any?" do 
 		it "has a #my_any? method" do
 			expect([]).to respond_to(:my_any?)
 		end
+
+		it "Goes through each element and returns true if any value in through the block returns true" 
+		end
+
+		it "Has a default block {|obj| obj} that returns true if any value evals to true"
+		end
+
 	end
 
 	describe "my_none?" do 
 		it "has a #my_none? method" do
 			expect([]).to respond_to(:my_none?)
 		end
+
+		it "returns true if none of the block evalutates to true"
+		end
+
+		it "if there is no block it only returns true if all the values are false"
+		end
+
 	end
 
 	describe "my_count" do 
 		it "has a #my_count method" do
 			expect([]).to respond_to(:my_count)
 		end
+
+		it "returns the number of values through enumaration"
+		end
+
+		it "If there is a block given it counts the number of elements that evaluate to true"
+		end
+
 	end
 
 	describe "#my_map" do
 		it "has a #my_map method" do
 			expect([]).to respond_to(:my_map)
+		end
+
+		it "returns a new array where each element has been run through the block once"
+		end
+
+		it "if there is no block it returns an enumerator"
 		end
 	end
 
@@ -79,12 +113,21 @@ describe Enumerable do
 		it "has a #my_each method" do
 			expect([]).to respond_to(:my_each)
 		end
+
+		it "combine all elements through enum by applying a block or a symbol that names a method or opperator"
+		end
+
+		it "if there is no bock or symnol it returns the first element of the collection I think this means array[0]?"
+		end
+
 	end
 
 	describe "multiply_els" do
-		it "has a #my_multiply_els method" do
+		it "has a #my_multiply_els method" 
 			expect([]).to respond_to(:my_multiply_els)
 		end
+
+		it
 	end
 
 

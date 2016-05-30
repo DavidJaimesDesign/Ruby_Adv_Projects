@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "rake"
-gem "rspec", "~>3.0"
+gem "rspec"
 
 # So you can use binding.pry anywhere in your 
 # script to freeze time.  This happens when the
