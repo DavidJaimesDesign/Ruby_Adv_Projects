@@ -6,13 +6,12 @@ describe Enumerable do
 			expect([]).to respond_to(:my_each)
 		end
 
-		it "should go through each value in an array" do
-		end
-
-		it "should yield to a block" do
+		it "Go through an array and apply a block" do
+			expect([1,2,3,4].my_each{|i| print i*2, " "}).to eq("2 4 6 8")  
 		end
 
 		it "should return an Enumerator if there is no block" do
+			expect([1,2,3,4].my_each).to eq()
 		end
 
 	end
@@ -50,10 +49,10 @@ describe Enumerable do
 			expect([]).to respond_to(:my_all?)
 		end
 
-		it "Goes through each element and returns true if there are no nil or false values in the block"
+		it "Goes through each element and returns true if there are no nil or false values in the block" do
 		end
 
-		it "Has a default block {|obj| obj} that returns true when there are no nil or false values"
+		it "Has a default block {|obj| obj} that returns true when there are no nil or false values" do
 		end
 
 	end
@@ -63,10 +62,10 @@ describe Enumerable do
 			expect([]).to respond_to(:my_any?)
 		end
 
-		it "Goes through each element and returns true if any value in through the block returns true" 
+		it "Goes through each element and returns true if any value in through the block returns true" do
 		end
 
-		it "Has a default block {|obj| obj} that returns true if any value evals to true"
+		it "Has a default block {|obj| obj} that returns true if any value evals to true" do
 		end
 
 	end
@@ -76,10 +75,10 @@ describe Enumerable do
 			expect([]).to respond_to(:my_none?)
 		end
 
-		it "returns true if none of the block evalutates to true"
+		it "returns true if none of the block evalutates to true" do
 		end
 
-		it "if there is no block it only returns true if all the values are false"
+		it "if there is no block it only returns true if all the values are false" do
 		end
 
 	end
@@ -89,10 +88,10 @@ describe Enumerable do
 			expect([]).to respond_to(:my_count)
 		end
 
-		it "returns the number of values through enumaration"
+		it "returns the number of values through enumaration" do
 		end
 
-		it "If there is a block given it counts the number of elements that evaluate to true"
+		it "If there is a block given it counts the number of elements that evaluate to true" do
 		end
 
 	end
@@ -102,10 +101,10 @@ describe Enumerable do
 			expect([]).to respond_to(:my_map)
 		end
 
-		it "returns a new array where each element has been run through the block once"
+		it "returns a new array where each element has been run through the block once" do
 		end
 
-		it "if there is no block it returns an enumerator"
+		it "if there is no block it returns an enumerator" do
 		end
 	end
 
@@ -114,16 +113,16 @@ describe Enumerable do
 			expect([]).to respond_to(:my_each)
 		end
 
-		it "combine all elements through enum by applying a block or a symbol that names a method or opperator"
+		it "combine all elements through enum by applying a block or a symbol that names a method or opperator" do
 		end
 
-		it "if there is no bock or symnol it returns the first element of the collection I think this means array[0]?"
+		it "if there is no bock or symnol it returns the first element of the collection I think this means array[0]?" do
 		end
 
 	end
 
 	describe "multiply_els" do
-		it "has a #my_multiply_els method" 
+		it "has a #my_multiply_els method" do
 			expect([]).to respond_to(:my_multiply_els)
 		end
 
