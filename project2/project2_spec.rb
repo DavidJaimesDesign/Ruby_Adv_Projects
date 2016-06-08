@@ -7,11 +7,11 @@ describe Enumerable do
 		end
 
 		it "Go through an array and apply a block" do
-			expect([1,2,3,4].my_each{|i| print i*2, " "}).to eq("2 4 6 8")  
+			expect([1,2,3,4].my_each{|i| print i}).to eq([1,2,3,4])  
 		end
 
 		it "should return an Enumerator if there is no block" do
-			expect([1,2,3,4].my_each).to eq()
+			expect([1,2,3,4].my_each).to eq([1, 2, 3, 4].each)
 		end
 
 	end
