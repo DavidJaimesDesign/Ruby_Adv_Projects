@@ -11,7 +11,7 @@ describe Enumerable do
 		end
 
 		it "should return an Enumerator if there is no block" do
-			expect([1,2,3,4].my_each).to eq([1, 2, 3, 4].each)
+			expect([1,2,3,4].my_each).to be_an(Enumerator)
 		end
 
 	end
@@ -22,12 +22,11 @@ describe Enumerable do
 		end
 
 		it "goes through each index and value in an array" do
-		end
-
-		it "should yield to a block" do
+			expect(["a", "b", "c", "d"].my_each_with_index{|index, value| print "#{index}: #{value}"}).to eq(["a", "b", "c", "d"])
 		end
 
 		it "should return an Enumerator if there is no block" do
+			expect(["a", "b", "c", "d"].my_each_with_index).to be_an(Enumerator)
 		end
 
 	end
@@ -37,10 +36,12 @@ describe Enumerable do
 			expect([]).to respond_to(:my_select)
 		end
 
-		it "Returns an array containing all elements" do 
+		it "should return an Enumerator if there is no block" do
+			expect([1,2,3,4].my_select). to be_an(Enumerator) 
 		end
 
 		it "Returns an array w/ all elements of enum where the block is true" do
+			expect([1,2,3,4].my_select{|i| i.even?}).to eq([2,4])
 		end
 	end
 
