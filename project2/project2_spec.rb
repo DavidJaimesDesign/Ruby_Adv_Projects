@@ -46,14 +46,32 @@ describe Enumerable do
 	end
 
 	describe "#my_all?" do
-		it "has a #my_all method" do
+		it "has a #my_all? method" do
 			expect([]).to respond_to(:my_all?)
 		end
 
 		it "Goes through each element and returns true if there are no nil or false values in the block" do
+			expect([1,2,3,4].my_all?{|int| int > 0}).to eq(true)
+		end
+
+		it "Returns false if there is a nil value" do 
+			expect([nil, 1, 2, 3].my_all?{|int| int.is_a? Integer}).to eq(false)
+		end
+
+		it "Returns false if there is a false value" do
+			expect([1,2,3,4].my_all?{|int| int < 0}).to eq(false)
 		end
 
 		it "Has a default block {|obj| obj} that returns true when there are no nil or false values" do
+			expect([1,2,3,4].my_all?).to eq(true)
+		end
+
+		it "returns false in default block when there is a nil value" do 
+			expect([1,nil,3,4].my_all?).to eq(false)
+		end
+
+		it "returns false in default block when ther is a false value" do
+			expect([1,2,false,4].my_all?).tp eq(false)
 		end
 
 	end
@@ -64,6 +82,7 @@ describe Enumerable do
 		end
 
 		it "Goes through each element and returns true if any value in through the block returns true" do
+			expect 
 		end
 
 		it "Has a default block {|obj| obj} that returns true if any value evals to true" do
