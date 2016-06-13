@@ -42,6 +42,7 @@ describe Enumerable do
 
 		it "Returns an array w/ all elements of enum where the block is true" do
 			expect([1,2,3,4].my_select{|i| i.even?}).to eq([2,4])
+			expect([1,2,3,4].my_select{|i| i == 7}).to eq([])
 		end
 	end
 
@@ -59,7 +60,7 @@ describe Enumerable do
 		end
 
 		it "Returns false if there is a false value" do
-			expect([1,2,3,4].my_all?{|int| int < 0}).to eq(false)
+			expect([1,2,3,4].my_all?{|int| int > 1}).to eq(false)
 		end
 
 		it "Has a default block {|obj| obj} that returns true when there are no nil or false values" do
@@ -71,7 +72,7 @@ describe Enumerable do
 		end
 
 		it "returns false in default block when ther is a false value" do
-			expect([1,2,false,4].my_all?).tp eq(false)
+			expect([1,2,false,4].my_all?).to eq(false)
 		end
 
 	end
@@ -81,11 +82,14 @@ describe Enumerable do
 			expect([]).to respond_to(:my_any?)
 		end
 
-		it "Goes through each element and returns true if any value in through the block returns true" do
-			expect 
+		it "Returns true if any value evaled by block returns true if not returns false" do
+			expect([1,2,3,4].my_any?{|x| x == 1}).to eq(true)
+			expect([1,1,1,1].my_any?{|x| x == 2}).to eq(false)
 		end
 
 		it "Has a default block {|obj| obj} that returns true if any value evals to true" do
+			expect([false, false, true].my_any?).to eq(true)
+			expect([false, false, nil].my_any?).to eq(false)
 		end
 
 	end
@@ -96,9 +100,13 @@ describe Enumerable do
 		end
 
 		it "returns true if none of the block evalutates to true" do
+			expect([1,2,3,4].none?{|x| x == 7}).to eq(true)
+			expect([1,2,3,4].none?{|x| x < 3}).to eq(false)
 		end
 
 		it "if there is no block it only returns true if all the values are false" do
+			expect([false, false, false].none?).to eq(true)
+			expect([true, false, false].none?).to eq(false)
 		end
 
 	end
@@ -109,11 +117,17 @@ describe Enumerable do
 		end
 
 		it "returns the number of values through enumaration" do
+			expect([1,1,1,1].count).to eq(4)
 		end
 
 		it "If there is a block given it counts the number of elements that evaluate to true" do
+			expect([1,2,3,4].count{|x| x % 2 == 0}).to eq(2)
 		end
 
+		#it "Also takes an arg" do 
+		#	expect([1,2,3].count(3)).to eq(3)
+		#end
+		#I don't see the point of this ability is this to find the size of the array? Idk	
 	end
 
 	describe "#my_map" do
@@ -122,31 +136,34 @@ describe Enumerable do
 		end
 
 		it "returns a new array where each element has been run through the block once" do
+			expect([1,2,3,4].my_map{|x| x + 1}).to eq([2,3,4,5])
 		end
 
 		it "if there is no block it returns an enumerator" do
+			expect([1,2,3,4].my_map).to be_an(Enumerator)
 		end
 	end
 
 	describe "#my_inject" do
-		it "has a #my_each method" do
-			expect([]).to respond_to(:my_each)
+		it "has a #my_inject method" do
+			expect([]).to respond_to(:my_inject)
 		end
 
-		it "combine all elements through enum by applying a block or a symbol that names a method or opperator" do
+		it "Returns the relust of evaluating the block " do
+			expect([1,2,3,4].my_inject{|x,y| x + y}).to eq(10)
+			expect([3,3,3].my_inject{|x,y| x * y}).to eq(27)
 		end
 
-		it "if there is no bock or symnol it returns the first element of the collection I think this means array[0]?" do
+		it "Returns Enumerator if no block given" do
+			expect([1,2,3,4].my_inject).to be_an(Enumerator)
 		end
 
 	end
 
 	describe "multiply_els" do
-		it "has a #my_multiply_els method" do
-			expect([]).to respond_to(:my_multiply_els)
+		it "multiplies an array" do
+			expect(multiply_els([3,3,3])).to eq(27)
 		end
-
-		it
 	end
 
 
