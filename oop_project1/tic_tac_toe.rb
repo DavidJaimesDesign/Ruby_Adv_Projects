@@ -3,14 +3,14 @@ puts "To make a move simply state where in the graph you want you piece"
 puts "For example top left is A1"
 new_game = Board.new
 
-while victory_conditions(new_game) == false do 
+while victory_conditions(new_game) == false || new_game.all? == false do 
 	puts "X your turn"
 	place_x = gets.chomp
-	#method where they actually add to the board
+	move(place_x,"X")
 	display_board(new_game)
 	puts "O your turn"
 	place_o = gets.chomp
-	#method where they actually add to the board 
+	move(place_O,"O") 
 	display_board(new_game)
 end 
 

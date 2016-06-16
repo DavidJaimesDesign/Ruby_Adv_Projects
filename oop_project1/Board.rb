@@ -5,13 +5,34 @@ class Board
 	end
 
 	def display_board(board)
-		puts board[0[0]] + " | " + board[0[1]] + " | " + board[0[2]]
-		puts board[1[0]] + " | " + board[1[1]] + " | " + board[1[2]]
-		puts board[2[0]] + " | " + board[2[1]] + " | " + board[2[2]]
+		puts "1   2   3  "
+		puts "A " board[0[0]] + " | " + board[0[1]] + " | " + board[0[2]]
+		puts "B " board[1[0]] + " | " + board[1[1]] + " | " + board[1[2]]
+		puts "C " board[2[0]] + " | " + board[2[1]] + " | " + board[2[2]]
 	end
 
 	def move(input,XO)
-		
+		case move
+		when input.capitalize == "A1"
+			board[0[0]] = XO
+		when input.capitalize == "A2"
+			board[0[1]] = XO
+		when input.capitalize == "A3"
+			board[0[2]] = XO
+		when input.capitalize == "B1"
+			board[1[0]] = XO
+		when input.capitalize == "B2"
+			board[1[1]] = XO
+		when input.capitalize == "B3"
+			board[1[2]] = XO
+		when input.capitalize == "C1"
+			board[2[0]] = XO
+		when input.capitalize == "C2"
+			board[2[1]] = XO
+		when input.capitalize == "C3"
+			board[2[2]] = XO
+		else 
+			puts "Wrong input please try again"
 	end
 
 	def victory_conditions(board)
@@ -54,7 +75,6 @@ class Board
 			return true
 		else		 	 
 			return false
-		#put victory conditions here
 	end
 
 	def player(name)
