@@ -2,6 +2,7 @@ class Board
 	def initialize
 		#put board variable here
 		@board = [[nil,nil,nil],[nil,nil,nil],[nil,nil,nil]]
+		@board
 	end
 
 	def display_board(board)
