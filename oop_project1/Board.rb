@@ -1,10 +1,11 @@
 class Board 
-	def initialize
+	def initialize(new_board)
 		#put board variable here
-		@board = [[nil,nil,nil],[nil,nil,nil],[nil,nil,nil]]
-		@board
+		new_board = @new_board
+		@new_board = [[nil,nil,nil],[nil,nil,nil],[nil,nil,nil]]
+		return new_board
 	end
-
+=begin
 	def display_board(board)
 		puts "1   2   3  "
 		puts "A " board[0[0]] + " | " + board[0[1]] + " | " + board[0[2]]
@@ -96,4 +97,6 @@ class Board
 			puts "Please put either Y or N, noob"
 		end
 	end
+=end
 end
+

@@ -1,12 +1,15 @@
 require "Board"
 
-describe "#initialize" do
-  it "builds a 3 by 3 board full of nill values" do
-    expect(initialize).to eq([[nil,nil,nil],[nil,nil,nil],[nil,nil,nil]])
+describe Board do
+  context "creating" do
+    it "should create an empty 3 by 3 2D array" do
+      expect(test_board = Board.new).to eq([[nil,nil,nil],[nil,nil,nil],[nil,nil,nil]])
+    end
   end
 end
+=begin
 describe "#display_board" do
-  it "does something" do
+  it "Displays the board with the current filed spots" do
     expect(something).to eq()
   end
 end
@@ -50,3 +53,4 @@ describe "#factorial" do
     expect(factorial(10)).to eq(3628800)
   end
 end
+=end
