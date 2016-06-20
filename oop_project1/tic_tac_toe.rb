@@ -1,38 +1,40 @@
 new_game = Array.new(9, nil)
 
 def display_board(board)
-	puts "1   2   3  "
-	puts "A " + board[0].to_s + " | " + board[1].to_s  + " | " + board[2].to_s 
-	puts "B " + board[3].to_s  + " | " + board[4].to_s  + " | " + board[5].to_s 
-	puts "C " + board[6].to_s  + " | " + board[7].to_s  + " | " + board[8].to_s 
+	puts board[0].to_s + " | " + board[1].to_s  + " | " + board[2].to_s 
+	puts board[3].to_s + " | " + board[4].to_s  + " | " + board[5].to_s 
+	puts board[6].to_s + " | " + board[7].to_s  + " | " + board[8].to_s 
 end
 
-def move(input,XO)
-	case move
-	when input.capitalize == "A1"
-		board[0] = XO
-	when input.capitalize == "A2"
-		board[1] = XO
-	when input.capitalize == "A3"
-		board[2] = XO
-	when input.capitalize == "B1"
-		board[3] = XO
-	when input.capitalize == "B2"
-		board[4] = XO
-	when input.capitalize == "B3"
-		board[5] = XO
-	when input.capitalize == "C1"
-		board[6] = XO
-	when input.capitalize == "C2"
-		board[7] = XO
-	when input.capitalize == "C3"
-		board[8] = XO
-	else 
-		puts "Wrong input please try again"
+def move(arr, square, value)
+	arr[square] = value
+end
+
+def victory_conditions(arr, value)
+	case win
+		when arr[0..2] == value
+			return true
+		when arr[3..5] == value
+			return true
+		when arr[6..8] == value
+			return true
+		when (arr[0] && arr[3] && arr[6]) == value
+			return true
+		when (arr[1] && arr[4] && arr[5]) == value
+			return true
+		when (arr[2] && arr[5] && arr[8]) == value
+			return true
+		when (arr[0] && arr[4] && arr[8]) == value
+			return true
+		when (arr[6] && arr[4] && arr[2]) == vlaue
+			return true
+		else
+			return false
+	end
 end
 
 display_board(new_game)
-move("A1", "X")
+move(new_game, 0, "X")
 display_board(new_game)
 
 =begin
