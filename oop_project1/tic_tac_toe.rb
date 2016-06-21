@@ -11,47 +11,38 @@ def move(arr, square, value)
 end
 
 def victory_conditions(arr, value)
-	case win
-		when arr[0..2] == value
-			return true
-		when arr[3..5] == value
-			return true
-		when arr[6..8] == value
-			return true
-		when (arr[0] && arr[3] && arr[6]) == value
-			return true
-		when (arr[1] && arr[4] && arr[5]) == value
-			return true
-		when (arr[2] && arr[5] && arr[8]) == value
-			return true
-		when (arr[0] && arr[4] && arr[8]) == value
-			return true
-		when (arr[6] && arr[4] && arr[2]) == vlaue
-			return true
-		else
-			return false
+	if arr[0] == value && arr[1] == value && arr[2] == value
+		true
+	elsif arr[3] == value && arr[4] == value && arr[5] == value
+		true
+	elsif arr[6] == value && arr[7] == value && arr[8] == value
+		true
+	elsif arr[0] == value && arr[3] == value && arr[6] == value
+		true
+	elsif arr[1] == value && arr[4] == value && arr[5] == value
+		true
+	elsif arr[2] == value && arr[5] == value && arr[8] == value
+		true
+	elsif arr[0] == value && arr[4] == value && arr[8] == value
+		true
+	elsif arr[6] == value && arr[4] == value && arr[2] == vlaue
+		true
+	else
+		false
 	end
 end
 
-display_board(new_game)
-move(new_game, 0, "X")
-display_board(new_game)
-
-=begin
 puts "Decide amongst yourselves who will go first X always goes first"
 puts "To make a move simply state where in the graph you want you piece"
-puts "For example top left is A1"
-new_game = Board.new
+puts "For example top left is 0 its a 9 block array basically pretty noob but cut me some slack"
 
-while victory_conditions(new_game) == false || new_game.all? == false do 
+while victory_conditions(new_game, "X") == true || victory_conditions(new_game, "O") == true|| new_game.all? == false do 
 	puts "X your turn"
-	place_x = gets.chomp
-	move(place_x,"X")
+	place_x = gets.chomp.to_i
+	move(new_game, place_x,"X")
 	display_board(new_game)
 	puts "O your turn"
-	place_o = gets.chomp
-	move(place_O,"O") 
+	place_o = gets.chomp.to_i
+	move(new_game, place_o,"O") 
 	display_board(new_game)
 end 
-=end
-

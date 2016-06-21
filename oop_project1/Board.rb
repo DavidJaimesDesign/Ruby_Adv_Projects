@@ -3,11 +3,11 @@ def move(arr, square, value)
 end
 
 def victory_conditions(arr, value)
-	if arr[0..2] == value
+	if arr[0] == value && arr[1] == value && arr[2] == value
 		true
-	elsif arr[3..5] == value
+	elsif arr[3] == value && arr[4] == value && arr[5] == value
 		true
-	elsif arr[6..8] == value
+	elsif arr[6] == value && arr[7] == value && arr[8] == value
 		true
 	elsif arr[0] == value && arr[3] == value && arr[6] == value
 		true
@@ -20,6 +20,6 @@ def victory_conditions(arr, value)
 	elsif arr[6] == value && arr[4] == value && arr[2] == vlaue
 		true
 	else
-		 false
+		false
 	end
 end
