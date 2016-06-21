@@ -36,13 +36,21 @@ puts "Decide amongst yourselves who will go first X always goes first"
 puts "To make a move simply state where in the graph you want you piece"
 puts "For example top left is 0 its a 9 block array basically pretty noob but cut me some slack"
 
-while victory_conditions(new_game, "X") == true || victory_conditions(new_game, "O") == true|| new_game.all? == false do 
+while victory_conditions(new_game, "X") == false || victory_conditions(new_game, "O") == false || new_game.all? == false do 
 	puts "X your turn"
 	place_x = gets.chomp.to_i
 	move(new_game, place_x,"X")
 	display_board(new_game)
+		if victory_conditions(new_game,"X")
+			break
+			put "X won noob"
+		end
 	puts "O your turn"
 	place_o = gets.chomp.to_i
 	move(new_game, place_o,"O") 
 	display_board(new_game)
+		if victory_conditions(new_game,"O")
+			put "O won noob"
+			break
+		end
 end 
