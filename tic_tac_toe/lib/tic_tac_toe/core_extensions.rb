@@ -12,7 +12,7 @@ class Array
 	end
 
 	def none_empty?
-		!any_empty?
+		!any_empty? #does not return false for an empty array but I dont know if we needs it
 	end
 	
 end
