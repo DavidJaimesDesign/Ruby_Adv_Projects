@@ -1,4 +1,5 @@
-path = "/Users/davidjaimes/Desktop/Test3"
+path_for_mtime = "/Users/davidjaimes/Desktop/Test3/*"
+path = "/Users/davidjaimes/Desktop/Test3/"
 rename_arr = [
 "16722",
 "11317",
@@ -86,8 +87,32 @@ rename_arr = [
 "15137"
 ]
 
+dir_length = Dir.glob(path_for_mtime).length
+arr_length = rename_arr.length 
+
+puts dir_length
+puts arr_length
+
+if dir_length == arr_length 
+	files_sorted_by_time =  Dir[path].sort_by{ |f| File.mtime(f) }
+	#print files_sorted_by_time
+	#Following group matches name array with name then renames it with arr_name
+	Dir.glob(path_for_mtime).each_with_index do |f2,i|
+ 		#File.rename(path + "/" + files_sorted_by_time[i], path + "/" + rename_arr[i] + "_" +  f2)
+ 		new_f2 = 
+ 		new_path = "#{rename_arr[1]}_#{f2}"
+ 		puts new_path
+ 	end 
+else
+	puts "Array lengths don't match script stopped!"
+end
+=begin
+	
+rescue Exception => e
+	
+end
 files_sorted_by_time =  Dir['/Users/davidjaimes/Desktop/Test3'].sort_by{ |f| File.ctime(f) }
 Dir.open(path).reject{|f| f[0] == '.'}.each_with_index do |f2,i|
  	File.rename(path + "/" + files_sorted_by_time[i], path + "/" + rename_arr[i] + "_" +  f2)
 end
-
+=end
