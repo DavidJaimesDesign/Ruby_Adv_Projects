@@ -20,7 +20,7 @@ module TicTacToe
 		end
 
 		def draw?
-			grid.flatten.map { |cell| cell.value }.none_empty? #removed .value lets see if this fucks anything
+			grid.flatten.map{ |cell| cell.value}.none_empty? #removed .value lets see if this fucks anything
 		end
 
 		def winner?
@@ -32,7 +32,7 @@ module TicTacToe
 		end
 
 		def winning_position_values(winning_position)
-			winning_position.map {|cell| cell} #removed .value will see if this fucks anythings
+			winning_position.map {|cell| cell.value} #removed .value will see if this fucks anythings
 		end
 
 		def formatted_grid
