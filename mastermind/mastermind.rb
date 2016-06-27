@@ -28,4 +28,32 @@ def guess_check(board,guess)
 
 end
 
+count = 0
+board = Array.new(4)
+code_gen(board)
+test_rig = ["blue", "blue", "green", "black"]
+
+while count < 12 do
+	puts "Color for the 1st spot"
+	blank_board[0] = gets.chomp
+	puts "Color for the 2nd spot"
+	blank_board[1] = gets.chomp
+	puts "Color for the 3rd spot"
+	blank_board[2] = gets.chomp
+	puts "Color for the 4th spot"
+	blank_board[3] = gets.chomp
+	puts "C1 = #{blank_board[0]} C2 = #{blank_board[1]} C3 = #{blank_board[2]} C4 = #{blank_board[3]}"
+
+	guess_check(board, blank_board)
+	if board == blank_board 
+		"Game Over You have defeated the best neural net in the world"
+		break
+	end
+
+	count += 1
+end
+
+
+
+
 
