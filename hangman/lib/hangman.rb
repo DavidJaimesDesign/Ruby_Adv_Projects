@@ -11,7 +11,7 @@ def hangman_word(words)
 			hangman_words.push(word)
 		end
 	end
-	puts hangman_words[rand(hangman_words.length)]
+	hangman_words[rand(hangman_words.length)]
 end
 
 def wrong_guess(letter)
@@ -21,33 +21,14 @@ def wrong_guess(letter)
 end
 
 def right_guess(letter)
+	#fills in the spots where the letters match with the word 
 end
 
-=begin
-	
-rescue Exception => e
-	
+def empty_lines(word)
+	empty_lines = Array.new(word.length) {|i| i = "_"}
+	print empty_lines
 end
-class Game
-	def initialize(word = Word.new)
-		@word = hangman_word(words)
-	end
-
-	def guess_check(guess)
-	end
-
-	def win
-	end
-
-	def loose
-	end
-
-	def save
-	end
-
-	def load
-	end
-end
-=end
 
 new_word = hangman_word(words)
+
+empty_lines(new_word)
