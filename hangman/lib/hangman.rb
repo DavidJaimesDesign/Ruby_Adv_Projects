@@ -1,66 +1,71 @@
 require 'csv'
-words = CSV.open "5desk.csv" 
-wrong_letters = Array.new
-right_letters = Array.new
 
 class Words
-	attr_accessor: words
+	attr_accessor :words
 	def initialize(source)
 		@words = CSV.open source.to_s
 	end
-
 	def hangman_words
-	words.each do |row|
-		word = row[0]
-		if word.length < 5 || word.length > 12
-			words.delete(word)
+		hangman_array = []
+		words.each do |row|
+			word = row[0]
+			hangman_array.push(word)
 		end
+		hangman_array.delete_if{|word| word.length < 5 || word.length > 12}
+		hangman_array
 	end
 end
 
 class Word
-	attr_accessor: word
+	attr_accessor :word, :source
 	def initialize(word = "")
 		@word = word
 	end
 
-	def hangman_word
-		source = Words.new(5desk.csv)
+	def hangman_word(source)
 		hangman_words = source.hangman_words
 		word = hangman_words[rand(hangman_words.length)]
 	end
 end
 
-
-class Guess
-	def initialize(letter)
-		@letter = letter
+class Guess_letter
+	attr_accessor :word, :guess
+	def initialize(guess, word)
+		@guess = guess
+		@word = word
 	end
 
 	def guess?
-		
-	end 
+		if guess.right_guess?
+			true
+		else
+			false
+		end
+	end	 
 
-	def wrong_guess(letter)
-		wrong_letters.push(letter)
-		puts "Wrong guesses #{wrong_letters}"
-		puts "You have #{6 - wrong_letters.length} guesses left" 
-	end
+	private
 
-	def right_guess(letter)
-	#fills in the spots where the letters match with the word 
-	end
-end
-
-class Game
-	def empty_lines(word)
-		empty_lines = Array.new(word.length) {|i| i = "_"}
-		print empty_lines
+	def right_guess?
+	 	word.any?{|i| word[i] == guess}
 	end
 end
 
+class Guess
+	#generates the guess array from a word
+	@@guess_var = Array.new  
+	attr_accessor :word, :guess_var
+	def initialize(word)
+		@word = word	
+	end
 
+	def generate
+	 	#generates the guess array 
+	 	(word.to_s.length).times { @@guess_var.push("_") }
+	end
 
-new_word = hangman_word(words)
+	def display
+		@@guess_var.each{|val| print " #{val} "}
+		puts ""
+	end
+end
 
-empty_lines(new_word)
