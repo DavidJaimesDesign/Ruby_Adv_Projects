@@ -17,7 +17,7 @@ class Words
 end
 
 class Word
-	attr_accessor :word, :source
+	attr_accessor :word, :source, :letter
 	def initialize(word = "")
 		@word = word
 	end
@@ -28,31 +28,11 @@ class Word
 	end
 end
 
-class Guess_letter
-	attr_accessor :word, :guess
-	def initialize(guess, word)
-		@guess = guess
-		@word = word
-	end
-
-	def guess?
-		if guess.right_guess?
-			true
-		else
-			false
-		end
-	end	 
-
-	private
-
-	def right_guess?
-	 	word.any?{|i| word[i] == guess}
-	end
-end
-
 class Guess
 	#generates the guess array from a word
 	@@guess_var = Array.new  
+	@@guess_count = 0
+
 	attr_accessor :word, :guess_var
 	def initialize(word)
 		@word = word	
@@ -66,6 +46,37 @@ class Guess
 	def display
 		@@guess_var.each{|val| print " #{val} "}
 		puts ""
+	end
+
+	def guess_check(letter)
+		arr = word.split("")
+		if arr.any?{|value| value == letter}
+			#displays the updated lines
+			@@guess_var[arr.index(letter)] = letter
+		else
+			puts "Nope that is wrong"
+		end
+	end
+
+	def guess_message(count)
+		case count
+		when 0
+			true
+		when 1
+			puts "5 guesses left the head is in the noose"
+		when 2
+			puts "4 guesses left the body of the chose is shown"
+		when 3 
+			puts "3 guesses left they stand on the platform"
+		when 4 
+			puts "2 guesses left they raise their hands in fear"
+		when 5 
+			puts "1 guess left you can see the fear in thier face and death looks into them"
+		when 6
+			puts "A rope goes taught and another life ends..."
+		else
+			puts "Error guess number exceeded"
+		end
 	end
 end
 

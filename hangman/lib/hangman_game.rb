@@ -10,17 +10,19 @@ guess = Guess.new(word_hangman)
 guess.generate
 guess.display
 
-guess_count = 0
+count = 0
 
-while guess_count < 6 do 
+while count < 6 do 
 	puts "Letter pls"
 	letter = gets.chomp
+	guess.guess_check(letter)
+	guess.display
+	guess.guess_message(count)
 	
-	
-	guess_count += 1
+	count += 1
 end
 
-if guess_count = 6
+if count == 6
 	puts "Death comes for us all in the end..."
 end
 
