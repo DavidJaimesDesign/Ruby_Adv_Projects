@@ -1,0 +1,13 @@
+---
+- !ruby/object:Game
+    name: Test
+    word: pwn
+    guess: ["_","w","_"]
+    count: 4
+
+- !ruby/object:Game
+    name: Test2
+    word: noob
+    guess: ["_","_","_","_"]
+    count: 5
+
