@@ -18,14 +18,18 @@ class Game
 		load_hash = YAML::load_file "game_data.yml"
 		load_hash.each_with_index do |val, index| 
 			if load_hash[index].name == save_name 
-				#sets the values in the game to these values
+				@word = load_hash[index].word
+				@guess = load_hash[index].guess
+				@count = load_hash[index].count
+				@name = load_hash[index].name
 			end
 		end
 	end
 
-	def save_game(game_data)
-		puts "What do you want to save this game as?"
-		save_name = gets.chomp
+	def save_game(game)
+		File.open("game_data.yml", 'a+') do |file|
+			file.write game.to_yaml
+		end
 		#save the data to yaml the name as the id and the game_data as the data
 	end
 end

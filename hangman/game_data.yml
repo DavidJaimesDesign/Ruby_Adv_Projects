@@ -11,3 +11,11 @@
     guess: ["_","_","_","_"]
     count: 5
 
+--- !ruby/object:Game
+word: pro
+guess:
+- p
+- r
+- o
+count: 0
+name: pro
