@@ -15,7 +15,7 @@ class Game
 	# GAME DATA SHOULD BE IN A HASH
 	def load_game(save_name)
 		puts "Loading"
-		load_hash = YAML::load_file "game_data.yml"
+		load_hash = YAML.load_stream(File.open("game_data.yml"))  
 		load_hash.each_with_index do |val, index| 
 			if load_hash[index].name == save_name 
 				@word = load_hash[index].word

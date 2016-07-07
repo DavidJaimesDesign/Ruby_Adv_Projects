@@ -34,13 +34,15 @@ class Guess
 	@@guess_count = 0
 
 	attr_accessor :word, :guess_var
-	def initialize(word)
+	def initialize(word = "")
 		@word = word	
 	end
 
 	def generate
-	 	#generates the guess array 
-	 	(word.to_s.length).times { @@guess_var.push("_") }
+	 	#generates the guess array if there hasnt already been one generated
+	 	if @@guess_var.empty?
+	 		(word.to_s.length).times { @@guess_var.push("_") }
+	 	end
 	end
 
 	def display
@@ -48,13 +50,33 @@ class Guess
 		puts ""
 	end
 
+	def test_display
+		test = @@guess_var
+		puts test.inspect
+	end
+
+	def save
+		save_arr = Array.new
+		save_arr = @@guess_var
+		save_arr
+	end
+
+	def guess_load(array, word)
+		@@guess_var = array
+		@word = word
+	end
+
 	def guess_check(letter)
 		arr = word.split("")
 		if arr.any?{|value| value == letter}
 			#displays the updated lines
-			@@guess_var[arr.index(letter)] = letter
+			arr.each do |value| 
+				if value == letter
+					@@guess_var[arr.index(letter)] = letter
+				end
+			end
 		else
-			puts "Nope that is wrong"
+			false
 		end
 	end
 
