@@ -1,4 +1,4 @@
-require "project2"
+require "enumerable_project"
 
 describe Enumerable do
 	describe "#my_each" do
