@@ -1,4 +1,4 @@
-require "project1"
+require "bubblesort_array_methods"
 
 describe "the bubble_sort method" do
   it "bubble sorts arrays" do
